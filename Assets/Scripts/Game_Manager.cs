@@ -24,6 +24,7 @@ public class Game_Manager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1f;
         }
     }
 
@@ -37,5 +38,6 @@ public class Game_Manager : MonoBehaviour
     {
         game_over = true;
         game_over_text.SetActive(true);
+        Time.timeScale = 0;
     }
 }

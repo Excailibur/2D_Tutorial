@@ -9,11 +9,14 @@ public class Player : MonoBehaviour
 
     //Laser for player
     [SerializeField] private GameObject laser;
+    [SerializeField] private float fireRate = 1f;
 
     void Start()
     {
         //Locks the Y
         yPosition = transform.position.y;
+
+        InvokeRepeating("Shoot", 0, fireRate);
     }
 
     // Update is called once per frame
@@ -22,11 +25,20 @@ public class Player : MonoBehaviour
         //Player Movement
         Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector2(position.x, yPosition);
+    }
 
-        //Spawns laser
-        if (Input.GetKeyDown(KeyCode.Space))
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Enemy"))
         {
-            Instantiate(laser, transform.position, Quaternion.identity);
+            Game_Manager.instance.GameOver();
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
+    }
+
+    public void Shoot()
+    {
+        Instantiate(laser, transform.position, Quaternion.identity);
     }
 }

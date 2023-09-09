@@ -17,13 +17,6 @@ public class Enemy_Script : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            Game_Manager.instance.GameOver();
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
-
         if (collision.gameObject.tag.Equals("Laser"))
         {
             Game_Manager.instance.IncreaseScore(point_value);
