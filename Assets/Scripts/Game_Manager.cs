@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Game_Manager : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Game_Manager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI score_text;
     [SerializeField] private GameObject game_over_text;
+
+    [SerializeField] private GameObject[] health;
+
 
     private void Awake()
     {
@@ -39,5 +43,9 @@ public class Game_Manager : MonoBehaviour
         game_over = true;
         game_over_text.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void TakeDamage(int playerHealth){
+        health[playerHealth].SetActive(false);
     }
 }

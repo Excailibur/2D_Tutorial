@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Laser
   - Enemy
+  - Power Up
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PowerUP
   - Water
   - UI
   - 
@@ -46,11 +47,11 @@ TagManager:
   - name: Background
     uniqueID: 226140565
     locked: 0
-  - name: Powerups
-    uniqueID: 3112352365
-    locked: 0
   - name: Players and Enemies
     uniqueID: 2033111583
+    locked: 0
+  - name: Powerups
+    uniqueID: 3112352365
     locked: 0
   - name: UI
     uniqueID: 3203281457

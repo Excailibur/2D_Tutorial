@@ -9,6 +9,7 @@ public class Enemy_Script : MonoBehaviour
     //Point value of the enemy
     [SerializeField] private int point_value = 10;
 
+    [SerializeField] GameObject[] powerups;
 
     void Update()
     {
@@ -21,7 +22,19 @@ public class Enemy_Script : MonoBehaviour
         {
             Game_Manager.instance.IncreaseScore(point_value);
             Destroy(collision.gameObject);
+            //Spawn Power Up
+            SpawnPowerUP();
             Destroy(gameObject);
+        }
+    }
+
+    private void SpawnPowerUP()
+    {
+        int random_Powerup = Random.Range(0, powerups.Length);
+        int rate = Random.Range(0, 100);
+        if (rate <= 50)
+        {
+            Instantiate(powerups[random_Powerup], transform.position, Quaternion.identity);
         }
     }
 }
